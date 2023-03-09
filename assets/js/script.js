@@ -49,21 +49,6 @@ let url = "http://127.0.0.1:5500";
 
 
 
-/*---------------------------------*/
-/*   Get-Input-Values-If-Saved     */
-/*---------------------------------*/
-/*let workersPayment = 0;
-let kombPayment = 0;
-let unforeseenValue = 0;
-let explanationValue = '';
-let contractorName;
-let getFinalDate;*/
-
-/*let reportInfo = localStorage.getItem('reportinfo');
-reportInfo = JSON.parse(reportInfo);*/
-
-
-
 /*---------------------------*/
 /*    Unexpected-Events      */
 /*---------------------------*/

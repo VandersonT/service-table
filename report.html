@@ -56,26 +56,6 @@
                     <th>Trabalhadores</th>
                     <th>Preço</th>
                 </tr>
-                <tr>
-                    <td>22/01</td>
-                    <td>6</td>
-                    <td>R$1.000,00</td>
-                </tr>
-                <tr>
-                    <td>22/01</td>
-                    <td>6</td>
-                    <td>R$1.000,00</td>
-                </tr>
-                <tr>
-                    <td>22/01</td>
-                    <td>6</td>
-                    <td>R$1.000,00</td>
-                </tr>
-                <tr>
-                    <td>22/01</td>
-                    <td>6</td>
-                    <td>R$1.000,00</td>
-                </tr>
             </table>
             <div class="total">
                 <b>Total: </b>
@@ -89,17 +69,17 @@
             <div class="resultsBox">
 
                 <div class="infoColumn">
-                    <div class="resultsSingle">
+                    <div class="resultsSingle kombPrice">
                         <b>Valor Komb: </b>
                         <span>R$240,00/dia</span>
                     </div>
-                    <div class="resultsSingle">
-                        <b>Data: </b>
-                        <span>R$240,00/dia</span>
-                    </div>
-                    <div class="resultsSingle">
+                    <div class="resultsSingle unexpectedValue">
                         <b>Imprevistos: </b>
                         <span>R$240,00/dia</span>
+                    </div>
+                    <div class="resultsSingle unexpectedValue">
+                        <b>Totalizando: </b>
+                        <span>R$ 0,00/dia</span>
                     </div>
                 </div>
 
@@ -108,13 +88,13 @@
                         <b>Trabalhadores: </b>
                         <span>R$240,00/dia</span>
                     </div>
-                    <div class="resultsSingle">
-                        <b>Valor do Serviço: </b>
+                    <div class="resultsSingle daysWorked">
+                        <b>Dias Trabalhados: </b>
                         <span>R$240,00/dia</span>
                     </div>
                     <div class="resultsSingle">
-                        <b>Dias Trabalhados: </b>
-                        <span>R$240,00/dia</span>
+                        <b>Totalizando: </b>
+                        <span>R$ 240,00/dia</span>
                     </div>
                 </div>
 
@@ -131,12 +111,12 @@
             </div>
         </div>
 
-    </main>
 
-    <div class="teste">
-        <button onclick="imprimir()">Imprimir</button>
-        ...
-    </div>
+        <div class="buttonBox">
+            <button class="saveReport" onclick="imprimir()">Imprimir</button>
+        </div>
+
+    </main>
 
     <script src="./assets/js/report.js"></script>
 </body>
