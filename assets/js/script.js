@@ -1,10 +1,43 @@
 /*---------------------------*/
 /*     Global-Functions    - */
 /*---------------------------*/
-    function formatarMoeda(valor) {
-        return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    }
+    function getTableData(){
 
+        let table = document.querySelector('table');
+        let prices;
+        let days;
+        let workers;
+        let tableData = [];
+        
+        /*Get days from table*/
+        cells = table.querySelectorAll("td:nth-child(1)");
+        days = [];
+
+        cells.forEach(function(cell) {
+            days.push(cell.innerText);
+        });
+
+        /*Get workers from table*/
+        cells = table.querySelectorAll("td:nth-child(2)");
+        workers = [];
+
+        cells.forEach(function(cell) {
+            workers.push(cell.innerText);
+        });
+
+        
+        /*Get prices from table*/
+        cells = table.querySelectorAll("td:nth-child(3)");
+        prices = [];
+
+        cells.forEach(function(cell) {
+            prices.push(cell.innerText);
+        });
+
+        tableData.push(days, workers, prices);
+        
+        return tableData;
+    }
 
 
 
@@ -133,11 +166,24 @@ generateButton.addEventListener('click', () => {
 
     if(confirm('Você quer gerar o relatório agora?')){
 
-        /*Salva os dados dos inputs no localStorage*/
-        
-        /*Pega os valores da tabela e salva no localstorage e manda pra outra página*/
 
-        console.log('gerando...');
+        /*------------------Save-Data-------------------*/
+
+            //Salva os dados dos inputs no localStorage
+
+        /*----------------------------------------------*/
+        
+        
+
+        /*----------------GET-TABLE-DATA----------------*/
+        
+            let tableData = getTableData();
+
+            console.log(tableData);
+
+        /*----------------------------------------------*/
+
+
     }
 
 })
