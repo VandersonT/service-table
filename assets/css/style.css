@@ -96,6 +96,7 @@ main{
     flex-direction: column;
     justify-content: center;
     display: none;
+    text-align: center;
 }
 
 

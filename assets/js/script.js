@@ -1,4 +1,12 @@
 /*---------------------------*/
+/*     Global-Variables    - */
+/*---------------------------*/
+let url = "http://127.0.0.1:5500";
+
+
+
+
+/*---------------------------*/
 /*     Global-Functions    - */
 /*---------------------------*/
     function getTableData(){
@@ -44,11 +52,15 @@
 /*---------------------------------*/
 /*   Get-Input-Values-If-Saved     */
 /*---------------------------------*/
-let workersPayment = 0;
+/*let workersPayment = 0;
 let kombPayment = 0;
 let unforeseenValue = 0;
 let explanationValue = '';
+let contractorName;
+let getFinalDate;*/
 
+/*let reportInfo = localStorage.getItem('reportinfo');
+reportInfo = JSON.parse(reportInfo);*/
 
 
 
@@ -74,32 +86,64 @@ checkbox.addEventListener('click', function(){
 /*     Get-Input-Values      */
 /*---------------------------*/
 
+    /*Get pre saved data*/
+    let reportInfo = localStorage.getItem('reportinfo');
+    reportInfo = JSON.parse(reportInfo);
+
     /*Get-Workers-Payment-Value*/
     let workersPayment_input = document.querySelector('.workersPayment');
 
+    if(reportInfo['workersPayment'])
+        workersPayment_input.value = reportInfo['workersPayment'];
+
     workersPayment_input.addEventListener('input', () => {
-        workersPayment = workersPayment_input.value;
+        let workersPayment = workersPayment_input.value;
     });
 
+
+    /*Get-Contractor-Name*/
+    let contractorName_input = document.querySelector('.contractorName');
+
+    contractorName_input.addEventListener('input', () => {
+        let contractorName = contractorName_input.value;
+    });
+
+    /*Get-Final-Date*/
+    let getFinalDate_input = document.querySelector('.finalDate');
+
+    getFinalDate_input.addEventListener('input', () => {
+        let getFinalDate = getFinalDate_input.value;
+    });
+
+    /*Get-Initial-Date*/
+    let getInitialDate_input = document.querySelector('.initialDate');
+
+    getInitialDate_input.addEventListener('input', () => {
+        let getinitialDate = getInitialDate_input.value;
+    });
+    
     /*Get-Komb-Payment-Value*/
     let kombPayment_input = document.querySelector('.kombPayment');
 
+    if(reportInfo['kombPayment'])
+        kombPayment_input.value = reportInfo['kombPayment'];
+
     kombPayment_input.addEventListener('input', () => {
-        kombPayment = kombPayment_input.value;
+        let kombPayment = kombPayment_input.value;
     });
 
     /*Get-unforeseen-Value*/
     let unforeseen_input = document.querySelector('.unforeseen');
 
     unforeseen_input.addEventListener('input', () => {
-        unforeseenValue = unforeseen_input.value;
+        let unforeseenValue = unforeseen_input.value;
     });
 
     /*Get-explanation-of-unexpected-value*/
     let explanation_input = document.querySelector('.explanation');
 
     explanation_input.addEventListener('input', () => {
-        explanationValue = explanation_input.value;
+        let explanationValue = explanation_input.value;
     });
 
 
@@ -165,25 +209,31 @@ let generateButton = document.querySelector('.generateButton');
 generateButton.addEventListener('click', () => {
 
     if(confirm('Você quer gerar o relatório agora?')){
-
-
-        /*------------------Save-Data-------------------*/
-
-            //Salva os dados dos inputs no localStorage
-
-        /*----------------------------------------------*/
         
         
 
-        /*----------------GET-TABLE-DATA----------------*/
-        
+        /*---------------GET-DATA-FOR-REPORT------------*/
             let tableData = getTableData();
 
-            console.log(tableData);
-
+            let reportinfo = {
+                workersPayment,
+                kombPayment,
+                unforeseenValue,
+                explanationValue,
+                contractorName,
+                getFinalDate
+            }
         /*----------------------------------------------*/
+        
 
 
+        /*------------save-data-and-redirect---------------*/
+        localStorage.setItem('tableData', JSON.stringify(tableData));
+        localStorage.setItem('reportinfo', JSON.stringify(reportinfo));
+
+        window.location.href = url+"/report.html";
+        /*----------------------------------------------*/
+        
     }
 
 })

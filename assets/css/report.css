@@ -1,0 +1,129 @@
+/*----------------------------------------*/
+/*                Header                  */
+/*----------------------------------------*/
+header{
+    width: 100vw;
+    max-width: 100%;
+    padding: 32px 0 0px 0;
+    border-bottom: 1px solid #969696;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header h1{
+    font-weight: 400;
+}
+
+.infoBox{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+
+.infoBox__column:nth-child(1){
+    margin-right: 100px;
+}
+
+.infoSingle{
+    margin-bottom: 37px;
+}
+
+
+
+/*----------------------------------------*/
+/*                 Body                   */
+/*----------------------------------------*/
+
+/*Table*/
+.tableBox{
+    width: 90%;
+    margin: 80px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tableTitle{
+    width: 90%;
+    text-align: center;
+    border: 1px solid gray;
+    border-bottom: 0;
+    padding: 7px 0;
+    font-size: 19px;
+    font-weight: 300;
+}
+
+table{
+    width: 90%;
+    border-collapse: collapse;
+}
+
+th, td{
+    border: 1px solid gray;
+    padding: 6px;
+    text-align: center;
+}
+
+td{
+    width: calc(100% / 3);
+}
+
+.total{
+    width: 90%;
+    text-align: right;
+    border: 1px solid gray;
+    border-top: 0;
+    padding: 10px 20px 10px 0;
+}
+
+
+/*finalResultsBox*/
+.finalResultsBox{
+    width: 90%;
+    margin: 80px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resultsTitle{
+    width: 90%;
+    text-align: center;
+    border: 1px solid gray;
+    border-bottom: 0;
+    padding: 7px 0;
+    font-size: 19px;
+    font-weight: 300;
+}
+
+.realTotal{
+    width: 90%;
+    text-align: center;
+    border: 1px solid gray;
+    border-top: 0;
+    padding: 12px;
+}
+
+.realTotal b{
+    text-transform: uppercase;
+}
+
+.resultsBox{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid gray;
+    align-items: center;
+}
+
+.resultsSingle{
+    margin: 20px;
+}
+
+.unexpected{
+    width: 90%;
+    margin-top: 23px;
+    font-size: 14px;
+}

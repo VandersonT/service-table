@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <title>Vanderson - Desenvolvedor Web Fullstack</title>
+    <title>Tabela de Serviços</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1, width=device-width,height=device-height" />
@@ -24,7 +24,15 @@
     <main>
         <div class="getInfo">
             <h3>Informações Básicas</h3>
+            <label>Nome do Contratante</label>
+            <input type="text" class="contractorName" placeholder="Digite o nome do contratante"/>
+            <label>Data de Início</label>
+            <input type="date" class="initialDate"/>
+            <label>Data Final</label>
+            <input type="date" class="finalDate"/>
+            <label>Dia dos Trabalhadores</label>
             <input type="number" class="workersPayment" placeholder="Valor por dia dos trabalhadores"/>
+            <label>Valor da Komb</label>
             <input type="number" class="kombPayment" placeholder="Valor por dia da komb"/>
             <div class="checkbox">
                 <input type="checkbox" class="someUnexpectedEvents" />
@@ -32,7 +40,9 @@
             </div>
 
             <div class="hiddenSection">
+                <label>Valor Imprevisto</label>
                 <input type="number" class="unforeseen" placeholder="Digite o valor do imprevisto"/>
+                <label>Explique o Imprevisto</label>
                 <textarea class="explanation" placeholder="Explique o imprevisto"></textarea>
             </div>
 
