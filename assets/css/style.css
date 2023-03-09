@@ -1,0 +1,55 @@
+/*-------------------------------*/
+/*         Media-Query's         */
+/*-------------------------------*/
+:root {
+    --primary: #3CB371;
+    --secondary: #636363;
+    --third: #D3D3D3;
+    --fourth: #00B2FF;
+}
+
+
+
+
+/*-------------------------------*/
+/*            Header             */
+/*-------------------------------*/
+header{
+    width: 100vw;
+    height: 53px;
+    background-color: var(--primary);
+    text-align: center;
+    line-height: 53px;
+}
+
+header h1{
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+/*-------------------------------*/
+/*            Main               */
+/*-------------------------------*/
+main{
+    background-color: red;
+}
+
+
+
+
+/*-------------------------------*/
+/*           Footer              */
+/*-------------------------------*/
+footer{
+    background-color: rgb(4, 0, 255);
+}
+
+
+
+
+/*-------------------------------*/
+/*         Media-Query's         */
+/*-------------------------------*/
+
