@@ -5,7 +5,6 @@
     --primary: #3CB371;
     --secondary: #636363;
     --third: #D3D3D3;
-    --fourth: #00B2FF;
 }
 
 
@@ -39,7 +38,11 @@ main{
     flex-direction: column;
     align-items: center;
     background-image: url('../images/bgimg.png');
+    padding-bottom: 100px;
 }
+
+
+/*Form*/
 .getInfo{
     width: 407px;
     background-color: var(--third);
@@ -59,6 +62,7 @@ main{
     border-bottom: 1px solid gray;
     font-size: 20px;
     font-weight: 300;
+    letter-spacing: 2px;
 }
 
 .getInfo textarea,
@@ -81,6 +85,10 @@ main{
     margin-bottom: 20px;
 }
 
+.checkbox span{
+    font-size: 15px;
+}
+
 .hiddenSection{
     /*display: flex;*/
     flex-direction: column;
@@ -89,7 +97,81 @@ main{
 }
 
 
+/*Table*/
+.tableBox{
+    margin-top: 40px;
+    margin-top: 113px;
+}
 
+table {
+    width: 823px;
+    border-collapse: collapse;
+}
+
+.tableTitle{
+    width: 823px;
+    background-color: var(--secondary);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+tr{
+    background-color: white;
+}
+
+td, th{
+    border: 1px solid gray;
+}
+
+th {
+    padding: 10px;
+    background-color: var(--third);
+    color: #181818;
+    font-size: 16px;
+}
+
+td{
+    padding: 10px;
+    text-align: center;
+}
+
+.buttonBox{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.newLineButton{
+    padding: 7px 17px;
+    border-radius: 2px;
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 15px;
+    background-color: var(--primary);
+    color: white;
+}
+
+.generateButton{
+    background-color: #00B2FF;
+    color: white;
+    padding: 10px 17px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 0;
+    font-size: 17px;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.generateButton:hover{
+    background-color: #00a2e7;
+    color: rgb(240, 240, 240);
+}
 
 /*-------------------------------*/
 /*         Media-Query's         */
