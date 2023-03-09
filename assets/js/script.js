@@ -11,11 +11,10 @@
 /*---------------------------------*/
 /*   Get-Input-Values-If-Saved     */
 /*---------------------------------*/
-    let workersPayment = 0;
-    let kombPayment = 0;
-    let unforeseenValue = 0;
-    let explanationValue = '';
-
+let workersPayment = 0;
+let kombPayment = 0;
+let unforeseenValue = 0;
+let explanationValue = '';
 
 
 
@@ -23,17 +22,17 @@
 /*---------------------------*/
 /*    Unexpected-Events      */
 /*---------------------------*/
-    let checkbox = document.querySelector('.someUnexpectedEvents');
-    let sectionHidden = document.querySelector('.hiddenSection');
-    let showSection = false;
+let checkbox = document.querySelector('.someUnexpectedEvents');
+let sectionHidden = document.querySelector('.hiddenSection');
+let showSection = false;
 
-    checkbox.addEventListener('click', function(){
-        showSection = !showSection;
-        if(showSection)
-            sectionHidden.style.display = 'flex';
-        else
-            sectionHidden.style.display = 'none';
-    });
+checkbox.addEventListener('click', function(){
+    showSection = !showSection;
+    if(showSection)
+        sectionHidden.style.display = 'flex';
+    else
+        sectionHidden.style.display = 'none';
+});
 
 
 
@@ -92,9 +91,9 @@ newLineButton.addEventListener('click', () => {
     celulaWorkers.setAttribute("contenteditable", true);
     celulaPrice.setAttribute("contenteditable", true);
 
-    celulaDay.innerHTML = "27/04";
-    celulaWorkers.innerHTML = "40";
-    celulaPrice.innerHTML = "408";
+    celulaDay.innerHTML = "dd/mm";
+    celulaWorkers.innerHTML = "0";
+    celulaPrice.innerHTML = "R$0,00";
     table.appendChild(novaLinha);
 })
 
@@ -124,6 +123,7 @@ deleteLineButton.addEventListener('click', () => {
 
 
 
+
 /*---------------------------------*/
 /*         Generate Table          */
 /*---------------------------------*/
@@ -132,7 +132,12 @@ let generateButton = document.querySelector('.generateButton');
 generateButton.addEventListener('click', () => {
 
     if(confirm('Você quer gerar o relatório agora?')){
-        console.log('gerando...')
+
+        /*Salva os dados dos inputs no localStorage*/
+        
+        /*Pega os valores da tabela e salva no localstorage e manda pra outra página*/
+
+        console.log('gerando...');
     }
 
 })
