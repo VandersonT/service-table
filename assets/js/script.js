@@ -73,3 +73,66 @@
 
 
 
+/*---------------------------------*/
+/*        Add Row in Table         */
+/*---------------------------------*/
+let newLineButton = document.querySelector('.newLineButton');
+
+newLineButton.addEventListener('click', () => {
+    let table = document.querySelector('table');
+
+    var novaLinha = document.createElement("tr");
+    
+    var celulaDay = novaLinha.insertCell(0);
+    var celulaWorkers = novaLinha.insertCell(1);
+    var celulaPrice = novaLinha.insertCell(2);
+    
+
+    celulaDay.setAttribute("contenteditable", true);
+    celulaWorkers.setAttribute("contenteditable", true);
+    celulaPrice.setAttribute("contenteditable", true);
+
+    celulaDay.innerHTML = "27/04";
+    celulaWorkers.innerHTML = "40";
+    celulaPrice.innerHTML = "408";
+    table.appendChild(novaLinha);
+})
+
+
+
+
+/*---------------------------------*/
+/*           Delete Line           */
+/*---------------------------------*/
+let deleteLineButton = document.querySelector('.deleteLineButton');
+deleteLineButton.addEventListener('click', () => {
+    
+    let line = prompt('Qual linha você quer deletar?');
+    
+    if(line){
+        let table = document.querySelector('table');
+
+        if(line > table.rows.length || line < 0){
+            alert('Número de linha invalido');
+            return;
+        }
+
+        table.deleteRow(line);
+    }
+    
+});
+
+
+
+/*---------------------------------*/
+/*         Generate Table          */
+/*---------------------------------*/
+let generateButton = document.querySelector('.generateButton');
+
+generateButton.addEventListener('click', () => {
+
+    if(confirm('Você quer gerar o relatório agora?')){
+        console.log('gerando...')
+    }
+
+})

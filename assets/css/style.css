@@ -134,6 +134,7 @@ th {
 }
 
 td{
+    width: calc(100% / 3);
     padding: 10px;
     text-align: center;
 }
@@ -153,6 +154,19 @@ td{
     outline: none;
     margin-bottom: 15px;
     background-color: var(--primary);
+    color: white;
+}
+
+.deleteLineButton{
+    padding: 7px 17px;
+    border-radius: 2px;
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    background-color: rgb(134, 14, 14);
     color: white;
 }
 
