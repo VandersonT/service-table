@@ -33,6 +33,15 @@ function removeRealFormat(price){
 /*----------------------------------------*/
 
 
+    /*Send header info*/
+    document.querySelector('.contractorBox span').innerHTML = reportInfo['contractorName'];
+
+    let initialDate = new Date(`${reportInfo['initialDate']}T00:00:00-03:00`);
+    document.querySelector('.initialDate span').innerHTML = initialDate.toLocaleDateString('pt-BR',{timeZone: 'America/Sao_Paulo'});
+    
+    let finalDate = new Date(`${reportInfo['finalDate']}T00:00:00-03:00`);
+    document.querySelector('.finalDate span').innerHTML = finalDate.toLocaleDateString('pt-BR',{timeZone: 'America/Sao_Paulo'});
+
     /*Send table data for table*/
     for(let i = 0; i < tableData[0].length; i++){
         let table = document.querySelector('table');
@@ -95,5 +104,7 @@ function removeRealFormat(price){
 /*           Generate Report              */
 /*----------------------------------------*/
 const imprimir = () => {
+    document.querySelector('.buttonBox').style.display = 'none';
     window.print();
+    document.querySelector('.buttonBox').style.display = 'flex';
 }

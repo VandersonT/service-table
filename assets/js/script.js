@@ -97,14 +97,14 @@ checkbox.addEventListener('click', function(){
     let getFinalDate_input = document.querySelector('.finalDate');
 
     getFinalDate_input.addEventListener('input', () => {
-        let getFinalDate = getFinalDate_input.value;
+        let finalDate = getFinalDate_input.value;
     });
 
     /*Get-Initial-Date*/
     let getInitialDate_input = document.querySelector('.initialDate');
 
     getInitialDate_input.addEventListener('input', () => {
-        let getinitialDate = getInitialDate_input.value;
+        let initialDate = getInitialDate_input.value;
     });
     
     /*Get-Komb-Payment-Value*/
@@ -206,7 +206,8 @@ generateButton.addEventListener('click', () => {
                 unforeseenValue,
                 explanationValue,
                 contractorName,
-                getFinalDate
+                finalDate,
+                initialDate
             }
         /*----------------------------------------------*/
         
