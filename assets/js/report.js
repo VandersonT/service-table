@@ -62,32 +62,34 @@ function removeRealFormat(price){
     
     document.querySelector('.total span').innerHTML = totalSalaryOfWorkers.toFixed(2);
 
-
     /*send Days Worked for Results*/
     let daysWorked = tableData[0].length;
     document.querySelector('.daysWorked span').innerHTML = daysWorked+' Dias';
 
 
-    /*send today's date for Results*/
-    /*
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = (currentDate.getMonth() + 1).toString().padStart(2, "0"); // adiciona um zero à esquerda do mês se ele tiver apenas um dígito
-    const day = currentDate.getDate().toString().padStart(2, "0"); // adiciona um zero à esquerda do dia se ele tiver apenas um dígito
-
-    const dataFormatada = `${day}/${month}/${year}`;
-    document.querySelector('.currentDate span').innerHTML = dataFormatada;
-    */
-
     /*send komb's price for Results*/
-    let KombPriceFormated = brasilianRealFormat(parseFloat(reportInfo['kombPayment']));
-    document.querySelector('.kombPrice span').innerHTML = KombPriceFormated+'/Dia';
+    let KombPrice = parseFloat(reportInfo['kombPayment'] * daysWorked);
+    document.querySelector('.kombPrice span').innerHTML = brasilianRealFormat(KombPrice)+'/Dia';
 
 
     /*send unexpected's value for Results if exists*/
-    let unexpectedValue = brasilianRealFormat(reportInfo['unforeseenValue']);
-    document.querySelector('.unexpectedValue span').innerHTML = unexpectedValue;
-    
+    let unexpectedValue = reportInfo['unforeseenValue'];
+    document.querySelector('.unexpectedValue span').innerHTML = brasilianRealFormat(unexpectedValue);
+
+    /*Set total of column 1*/
+    let total = KombPrice + unexpectedValue;
+    document.querySelector('.totalColumn1 span').innerHTML = brasilianRealFormat(total);
+
+    /*defines pay per day of workers*/
+    let workersPayment = parseFloat(reportInfo['workersPayment']);
+    document.querySelector('.workersPayment span').innerHTML = brasilianRealFormat(workersPayment);
+
+    /*Set total of column 2*/
+    let total2 = workersPayment*daysWorked;
+    document.querySelector('.total2 span').innerHTML = brasilianRealFormat(total2);
+
+    /*Final Price*/
+    document.querySelector('.realTotal span').innerHTML = brasilianRealFormat(total+total2);
 
 /*----------------------------------------*/
 /*           Generate Report              */
