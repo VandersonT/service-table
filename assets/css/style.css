@@ -40,7 +40,7 @@ main{
     align-items: center;
     background-image: url('../images/bgimg.png');
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: cover;
     padding-bottom: 100px;
 }
 
@@ -48,7 +48,6 @@ main{
 /*Form*/
 .getInfo{
     width: 407px;
-    
     background: linear-gradient(to bottom, #EAEAEA, #D3D3D3);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 0px 10px rgba(255, 255, 255, 0.5) inset;
     margin-top: 59px;
@@ -108,6 +107,7 @@ main{
     /*display: flex;*/
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     display: none;
     text-align: center;
 }
@@ -115,7 +115,6 @@ main{
 
 /*Table*/
 .tableBox{
-    margin-top: 40px;
     margin-top: 113px;
 }
 
@@ -214,7 +213,61 @@ td{
     color: rgb(240, 240, 240);
 }
 
+
+
+
 /*-------------------------------*/
 /*         Media-Query's         */
 /*-------------------------------*/
+@media screen and (max-width: 900px){
+    .tableBox{
+        width: 90%;
+    }
+    .tableTitle{
+        width: 100%;
+    }
+    table {
+        width: 100%;
+    }
+}
 
+@media screen and (max-width: 620px){
+    .btnStrucure{
+        font-size: 14px;
+    }
+    .loadLastTable,
+    .deleteLineButton{
+        margin-left: 10px;
+    }
+    .tableTitle{
+        font-size: 14px;
+    }
+    th {
+        font-size: 14px;
+    }
+    td{
+        font-size: 14px;
+    }
+    .generateButton{
+        font-size: 14px;
+    }
+    .buttonBox2{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+
+@media screen and (max-width: 460px){
+    .getInfo{
+        width: 90%;
+    }
+    .getInfo textarea,
+    .getInfo input:not(input[type=checkbox]){
+        width: 90%;
+    }
+    .hiddenSection{
+        width: 100%;
+    }
+}
