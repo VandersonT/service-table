@@ -259,6 +259,13 @@ generateButton.addEventListener('click', () => {
 
         /*---------------GET-DATA-FOR-REPORT------------*/
             let tableData = getTableData();
+            let workersPayment = document.querySelector('.workersPayment').value;
+            let kombPayment = document.querySelector('.kombPayment').value;
+            let unforeseenValue = document.querySelector('.unforeseen').value;
+            let explanationValue = document.querySelector('.explanation').value;
+            let contractorName = document.querySelector('.contractorName').value;
+            let finalDate = document.querySelector('.finalDate').value;
+            let initialDate = document.querySelector('.initialDate').value;
 
             let reportinfo = {
                 workersPayment,

@@ -94,11 +94,14 @@ function removeRealFormat(price){
     document.querySelector('.workersPayment span').innerHTML = brasilianRealFormat(workersPayment)+'/Dia';
 
     /*Final Price*/
-    let total = totalSalaryOfWorkers + (KombPrice*daysWorked) + unexpectedValue;
+    let total = totalSalaryOfWorkers + (KombPrice*daysWorked) + parseFloat(unexpectedValue);
     document.querySelector('.realTotal span').innerHTML = brasilianRealFormat(total);
 
 
-
+    /*unexpected*/
+    if(reportInfo && reportInfo['explanationValue']){
+        document.querySelector('.unexpected span').innerHTML = reportInfo['explanationValue'];
+    }
 
 
 /*----------------------------------------*/

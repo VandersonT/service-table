@@ -26,14 +26,23 @@ loadLastTable.addEventListener('click', function(){
         document.querySelector('.workersPayment').value = reportInfo['workersPayment'];
         document.querySelector('.kombPayment').value = reportInfo['kombPayment'];
 
+        if(reportInfo['unforeseenValue'])
+            document.querySelector('.unforeseen').value = reportInfo['unforeseenValue'];
+
+        if(reportInfo['explanationValue'])
+            document.querySelector('.explanation').value = reportInfo['explanationValue'];
+        
+        
+
 
         /*Delete all table data*/
         let table = document.querySelector('table');
 
-        let rows = table.rows;
-
-        while(rows.length > 0) {
-        table.deleteRow(0);
+        // Obtém todas as linhas da tabela, exceto a primeira
+        var rows = table.getElementsByTagName("tr");
+        for (var i = rows.length - 1; i > 0; i--) {
+            // Remove cada linha
+            table.deleteRow(i);
         }
 
         /*Send table data for table*/
