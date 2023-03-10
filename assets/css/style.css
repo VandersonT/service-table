@@ -148,19 +148,7 @@ td{
     margin-top: 20px;
 }
 
-.newLineButton{
-    padding: 7px 17px;
-    border-radius: 2px;
-    border: 0;
-    font-size: 16px;
-    cursor: pointer;
-    outline: none;
-    margin-bottom: 15px;
-    background-color: var(--primary);
-    color: white;
-}
-
-.deleteLineButton{
+.btnStrucure{
     padding: 7px 17px;
     border-radius: 2px;
     border: 0;
@@ -169,8 +157,20 @@ td{
     outline: none;
     margin-bottom: 15px;
     margin-left: 20px;
-    background-color: rgb(134, 14, 14);
     color: white;
+}
+
+.newLineButton{
+    cursor: pointer;
+    background-color: var(--primary);
+}
+
+.deleteLineButton{
+    background-color: rgb(134, 14, 14);
+}
+
+.calculatePrice{
+    background-color: rgb(80, 108, 126);
 }
 
 .generateButton{

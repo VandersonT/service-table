@@ -6,6 +6,8 @@ let url = "http://127.0.0.1:5500";
 
 
 
+
+
 /*---------------------------*/
 /*     Global-Functions    - */
 /*---------------------------*/
@@ -47,6 +49,29 @@ let url = "http://127.0.0.1:5500";
         return tableData;
     }
 
+    function brasilianRealFormat(valor) {
+        const opcoes = { style: "currency", currency: "BRL" };
+        return valor.toLocaleString("pt-BR", opcoes);
+    }
+
+
+    function setWorkersFieldToWatch(){
+        let tableLines = document.querySelectorAll('table tr');
+
+        for(let i = 1; i < tableLines.length; i++){
+            let workersField = tableLines[i].querySelectorAll('td')[1];
+            
+            workersField.addEventListener('keyup', function(){
+
+                console.log(workersField.innerText)
+                calculatePrice();
+            });
+        }
+    }
+    setWorkersFieldToWatch();
+
+
+
 
 
 /*---------------------------*/
@@ -67,6 +92,8 @@ checkbox.addEventListener('click', function(){
 
 
 
+
+
 /*---------------------------*/
 /*     Get-Input-Values      */
 /*---------------------------*/
@@ -75,14 +102,25 @@ checkbox.addEventListener('click', function(){
     let reportInfo = localStorage.getItem('reportinfo');
     reportInfo = JSON.parse(reportInfo);
 
+    /*Vars*/
+    var workersPayment;
+    var contractorName;
+    var finalDate;
+    var initialDate;
+    var kombPayment;
+    var unforeseenValue;
+    var explanationValue;
+
     /*Get-Workers-Payment-Value*/
     let workersPayment_input = document.querySelector('.workersPayment');
-
-    if(reportInfo['workersPayment'])
+    
+    if(reportInfo && reportInfo['workersPayment']){
         workersPayment_input.value = reportInfo['workersPayment'];
+        workersPayment = reportInfo['workersPayment'];
+    }
 
     workersPayment_input.addEventListener('input', () => {
-        let workersPayment = workersPayment_input.value;
+        workersPayment = workersPayment_input.value;
     });
 
 
@@ -90,47 +128,48 @@ checkbox.addEventListener('click', function(){
     let contractorName_input = document.querySelector('.contractorName');
 
     contractorName_input.addEventListener('input', () => {
-        let contractorName = contractorName_input.value;
+        contractorName = contractorName_input.value;
     });
 
     /*Get-Final-Date*/
     let getFinalDate_input = document.querySelector('.finalDate');
 
     getFinalDate_input.addEventListener('input', () => {
-        let finalDate = getFinalDate_input.value;
+        finalDate = getFinalDate_input.value;
     });
 
     /*Get-Initial-Date*/
     let getInitialDate_input = document.querySelector('.initialDate');
 
     getInitialDate_input.addEventListener('input', () => {
-        let initialDate = getInitialDate_input.value;
+        initialDate = getInitialDate_input.value;
     });
     
     /*Get-Komb-Payment-Value*/
     let kombPayment_input = document.querySelector('.kombPayment');
 
-    if(reportInfo['kombPayment'])
+    if(reportInfo && reportInfo['kombPayment']){
         kombPayment_input.value = reportInfo['kombPayment'];
+        kombPayment = reportInfo['kombPayment'];
+    }
 
     kombPayment_input.addEventListener('input', () => {
-        let kombPayment = kombPayment_input.value;
+        kombPayment = kombPayment_input.value;
     });
 
     /*Get-unforeseen-Value*/
     let unforeseen_input = document.querySelector('.unforeseen');
 
     unforeseen_input.addEventListener('input', () => {
-        let unforeseenValue = unforeseen_input.value;
+        unforeseenValue = unforeseen_input.value;
     });
 
     /*Get-explanation-of-unexpected-value*/
     let explanation_input = document.querySelector('.explanation');
 
     explanation_input.addEventListener('input', () => {
-        let explanationValue = explanation_input.value;
+        explanationValue = explanation_input.value;
     });
-
 
 
 
@@ -157,7 +196,11 @@ newLineButton.addEventListener('click', () => {
     celulaWorkers.innerHTML = "0";
     celulaPrice.innerHTML = "R$0,00";
     table.appendChild(novaLinha);
+
+    setWorkersFieldToWatch();
 })
+
+
 
 
 
@@ -180,9 +223,28 @@ deleteLineButton.addEventListener('click', () => {
 
         table.deleteRow(line);
     }
-    
+
+    setWorkersFieldToWatch();
 });
 
+
+/*---------------------------------*/
+/*         Calculate Price         */
+/*---------------------------------*/
+
+function calculatePrice(){
+
+    if(!workersPayment) workersPayment = 0;
+
+    let tablePrices = document.querySelectorAll('table tr');
+
+    for(let i = 1; i < tablePrices.length; i++){
+        let priceField = tablePrices[i].querySelectorAll('td')[2];
+        let workersField = tablePrices[i].querySelectorAll('td')[1].innerText;
+
+        priceField.innerHTML = brasilianRealFormat(parseFloat(workersField) * parseFloat(workersPayment));
+    }
+};
 
 
 
