@@ -62,8 +62,6 @@ let url = "http://127.0.0.1:5500";
             let workersField = tableLines[i].querySelectorAll('td')[1];
             
             workersField.addEventListener('keyup', function(){
-
-                console.log(workersField.innerText)
                 calculatePrice();
             });
         }
@@ -231,7 +229,6 @@ deleteLineButton.addEventListener('click', () => {
 /*---------------------------------*/
 /*         Calculate Price         */
 /*---------------------------------*/
-
 function calculatePrice(){
 
     if(!workersPayment) workersPayment = 0;
@@ -245,6 +242,7 @@ function calculatePrice(){
         priceField.innerHTML = brasilianRealFormat(parseFloat(workersField) * parseFloat(workersPayment));
     }
 };
+
 
 
 
