@@ -6,75 +6,108 @@ let url = "http://127.0.0.1:5500";
 
 
 
-
-
 /*---------------------------*/
 /*     Global-Functions    - */
 /*---------------------------*/
-    function getTableData(){
 
-        let table = document.querySelector('table');
-        let prices;
-        let days;
-        let workers;
-        let tableData = [];
-        
-        /*Get days from table*/
-        cells = table.querySelectorAll("td:nth-child(1)");
-        days = [];
+    /*--------------GET-TABLE-DATA--------------*/
+        /*Get all fields from the table and return the result*/
+        function getTableData(){
 
-        cells.forEach(function(cell) {
-            days.push(cell.innerText);
-        });
-
-        /*Get workers from table*/
-        cells = table.querySelectorAll("td:nth-child(2)");
-        workers = [];
-
-        cells.forEach(function(cell) {
-            workers.push(cell.innerText);
-        });
-
-        
-        /*Get prices from table*/
-        cells = table.querySelectorAll("td:nth-child(3)");
-        prices = [];
-
-        cells.forEach(function(cell) {
-            prices.push(cell.innerText);
-        });
-
-        tableData.push(days, workers, prices);
-        
-        return tableData;
-    }
-
-    function brasilianRealFormat(valor) {
-        const opcoes = { style: "currency", currency: "BRL" };
-        return valor.toLocaleString("pt-BR", opcoes);
-    }
-
-
-    function setWorkersFieldToWatch(){
-        let tableLines = document.querySelectorAll('table tr');
-
-        for(let i = 1; i < tableLines.length; i++){
-            let workersField = tableLines[i].querySelectorAll('td')[1];
+            let table = document.querySelector('table');
+            let prices;
+            let days;
+            let workers;
+            let tableData = [];
             
-            workersField.addEventListener('keyup', function(){
-                calculatePrice();
+            /*Get days from table*/
+            cells = table.querySelectorAll("td:nth-child(1)");
+            days = [];
+
+            cells.forEach(function(cell) {
+                days.push(cell.innerText);
             });
+
+            /*Get workers from table*/
+            cells = table.querySelectorAll("td:nth-child(2)");
+            workers = [];
+
+            cells.forEach(function(cell) {
+                workers.push(cell.innerText);
+            });
+
+            
+            /*Get prices from table*/
+            cells = table.querySelectorAll("td:nth-child(3)");
+            prices = [];
+
+            cells.forEach(function(cell) {
+                prices.push(cell.innerText);
+            });
+
+            tableData.push(days, workers, prices);
+            
+            return tableData;
         }
-    }
-    setWorkersFieldToWatch();
+    /*------------------------------------------*/
+
+
+
+    /*-----------------BRASILIAN-REAL---------------*/
+        /*Convert float to brasilian real R$*/
+        function brasilianRealFormat(valor) {
+            const opcoes = { style: "currency", currency: "BRL" };
+            return valor.toLocaleString("pt-BR", opcoes);
+        }
+    /*------------------------------------------*/
+
+
+
+    /*---------------WHATCH-TABLE---------------*/
+        /*Watch all the lines of the table to calculate the price automatically*/
+        function setWorkersFieldToWatch(){
+            let tableLines = document.querySelectorAll('table tr');
+            let workersPayment = document.querySelector('.workersPayment').value;
+
+            for(let i = 1; i < tableLines.length; i++){
+                let workersField = tableLines[i].querySelectorAll('td')[1];
+                
+                workersField.addEventListener('keyup', function(){
+                    calculatePrice();
+                });
+            }
+        }
+        setWorkersFieldToWatch();
+    /*------------------------------------------*/
+
+    
+
+    /*---------------CALCULATE-PRICE------------*/
+        function calculatePrice(){
+            let workersPayment = document.querySelector('.workersPayment').value;
+
+            if(!workersPayment) workersPayment = 0;
+
+            let tablePrices = document.querySelectorAll('table tr');
+
+            for(let i = 1; i < tablePrices.length; i++){
+                let priceField = tablePrices[i].querySelectorAll('td')[2];
+                let workersField = tablePrices[i].querySelectorAll('td')[1].innerText;
+
+                priceField.innerHTML = brasilianRealFormat(parseFloat(workersField) * parseFloat(workersPayment));
+            }
+        };
+    /*------------------------------------------*/
 
 
 
 
 
-/*---------------------------*/
-/*    Unexpected-Events      */
-/*---------------------------*/
+
+
+/*-------------------------------*/
+/*   Unexpected-Events-Toggle    */
+/*-------------------------------*/
 let checkbox = document.querySelector('.someUnexpectedEvents');
 let sectionHidden = document.querySelector('.hiddenSection');
 let showSection = false;
@@ -88,91 +121,11 @@ checkbox.addEventListener('click', function(){
 });
 
 
-
-
-
-
-/*---------------------------*/
-/*     Get-Input-Values      */
-/*---------------------------*/
-
-    /*Get pre saved data*/
-    let reportInfo = localStorage.getItem('reportinfo');
-    reportInfo = JSON.parse(reportInfo);
-
-    /*Vars*/
-    var workersPayment;
-    var contractorName;
-    var finalDate;
-    var initialDate;
-    var kombPayment;
-    var unforeseenValue;
-    var explanationValue;
-
-    /*Get-Workers-Payment-Value*/
-    let workersPayment_input = document.querySelector('.workersPayment');
     
-    if(reportInfo && reportInfo['workersPayment']){
-        workersPayment_input.value = reportInfo['workersPayment'];
-        workersPayment = reportInfo['workersPayment'];
-    }
-
-    workersPayment_input.addEventListener('input', () => {
-        workersPayment = workersPayment_input.value;
-    });
-
-
-    /*Get-Contractor-Name*/
-    let contractorName_input = document.querySelector('.contractorName');
-
-    contractorName_input.addEventListener('input', () => {
-        contractorName = contractorName_input.value;
-    });
-
-    /*Get-Final-Date*/
-    let getFinalDate_input = document.querySelector('.finalDate');
-
-    getFinalDate_input.addEventListener('input', () => {
-        finalDate = getFinalDate_input.value;
-    });
-
-    /*Get-Initial-Date*/
-    let getInitialDate_input = document.querySelector('.initialDate');
-
-    getInitialDate_input.addEventListener('input', () => {
-        initialDate = getInitialDate_input.value;
-    });
-    
-    /*Get-Komb-Payment-Value*/
-    let kombPayment_input = document.querySelector('.kombPayment');
-
-    if(reportInfo && reportInfo['kombPayment']){
-        kombPayment_input.value = reportInfo['kombPayment'];
-        kombPayment = reportInfo['kombPayment'];
-    }
-
-    kombPayment_input.addEventListener('input', () => {
-        kombPayment = kombPayment_input.value;
-    });
-
-    /*Get-unforeseen-Value*/
-    let unforeseen_input = document.querySelector('.unforeseen');
-
-    unforeseen_input.addEventListener('input', () => {
-        unforeseenValue = unforeseen_input.value;
-    });
-
-    /*Get-explanation-of-unexpected-value*/
-    let explanation_input = document.querySelector('.explanation');
-
-    explanation_input.addEventListener('input', () => {
-        explanationValue = explanation_input.value;
-    });
-
 
 
 /*---------------------------------*/
-/*        Add Row in Table         */
+/*      Add New Row in Table       */
 /*---------------------------------*/
 let newLineButton = document.querySelector('.newLineButton');
 
@@ -195,6 +148,7 @@ newLineButton.addEventListener('click', () => {
     celulaPrice.innerHTML = "R$0,00";
     table.appendChild(novaLinha);
 
+    /*orders to watch all the lines of the table to calculate the price automatically*/
     setWorkersFieldToWatch();
 })
 
@@ -203,8 +157,9 @@ newLineButton.addEventListener('click', () => {
 
 
 
+
 /*---------------------------------*/
-/*           Delete Line           */
+/*        Delete Table Line        */
 /*---------------------------------*/
 let deleteLineButton = document.querySelector('.deleteLineButton');
 deleteLineButton.addEventListener('click', () => {
@@ -222,26 +177,12 @@ deleteLineButton.addEventListener('click', () => {
         table.deleteRow(line);
     }
 
+    /*orders to watch all the lines of the table to calculate the price automatically*/
     setWorkersFieldToWatch();
 });
 
 
-/*---------------------------------*/
-/*         Calculate Price         */
-/*---------------------------------*/
-function calculatePrice(){
 
-    if(!workersPayment) workersPayment = 0;
-
-    let tablePrices = document.querySelectorAll('table tr');
-
-    for(let i = 1; i < tablePrices.length; i++){
-        let priceField = tablePrices[i].querySelectorAll('td')[2];
-        let workersField = tablePrices[i].querySelectorAll('td')[1].innerText;
-
-        priceField.innerHTML = brasilianRealFormat(parseFloat(workersField) * parseFloat(workersPayment));
-    }
-};
 
 
 
@@ -254,8 +195,6 @@ let generateButton = document.querySelector('.generateButton');
 generateButton.addEventListener('click', () => {
 
     if(confirm('Você quer gerar o relatório agora?')){
-        
-        
 
         /*---------------GET-DATA-FOR-REPORT------------*/
             let tableData = getTableData();
@@ -281,10 +220,10 @@ generateButton.addEventListener('click', () => {
 
 
         /*------------save-data-and-redirect---------------*/
-        localStorage.setItem('tableData', JSON.stringify(tableData));
-        localStorage.setItem('reportinfo', JSON.stringify(reportinfo));
+            localStorage.setItem('tableData', JSON.stringify(tableData));
+            localStorage.setItem('reportinfo', JSON.stringify(reportinfo));
 
-        window.location.href = url+"/report.html";
+            window.location.href = url+"/report.html";
         /*----------------------------------------------*/
         
     }

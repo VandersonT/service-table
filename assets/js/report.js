@@ -55,11 +55,6 @@ function removeRealFormat(price){
         var celulaDay = novaLinha.insertCell(0);
         var celulaWorkers = novaLinha.insertCell(1);
         var celulaPrice = novaLinha.insertCell(2);
-        
-
-        celulaDay.setAttribute("contenteditable", true);
-        celulaWorkers.setAttribute("contenteditable", true);
-        celulaPrice.setAttribute("contenteditable", true);
 
         celulaDay.innerHTML = tableData[0][i];
         celulaWorkers.innerHTML = tableData[1][i];
@@ -104,11 +99,13 @@ function removeRealFormat(price){
     }
 
 
+
+
 /*----------------------------------------*/
 /*           Generate Report              */
 /*----------------------------------------*/
 const imprimir = () => {
-    document.querySelector('.buttonBox').style.display = 'none';
-    window.print();
-    document.querySelector('.buttonBox').style.display = 'flex';
+    document.querySelector('.buttonBox').style.display = 'none';/*Hide print button*/
+    window.print();/*Print*/
+    document.querySelector('.buttonBox').style.display = 'flex';/*Show print button*/
 }
