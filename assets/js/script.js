@@ -2,6 +2,7 @@
 /*     Global-Variables    - */
 /*---------------------------*/
 let url = "http://127.0.0.1:5500";
+//let url = "https://vandersont.github.io/service-table";
 
 
 
@@ -206,6 +207,11 @@ generateButton.addEventListener('click', () => {
             let finalDate = document.querySelector('.finalDate').value;
             let initialDate = document.querySelector('.initialDate').value;
 
+            if(!tableData || !workersPayment || !kombPayment || !contractorName || !finalDate || !initialDate){
+                alert('Preencha todos os campos antes de proceguirmos!');
+                return;
+            }
+
             let reportinfo = {
                 workersPayment,
                 kombPayment,
@@ -223,7 +229,8 @@ generateButton.addEventListener('click', () => {
             localStorage.setItem('tableData', JSON.stringify(tableData));
             localStorage.setItem('reportinfo', JSON.stringify(reportinfo));
 
-            window.location.href = url+"/report.html";
+            //window.location.href = url+"/report.html";
+            window.open(url+"/report.html");
         /*----------------------------------------------*/
         
     }
