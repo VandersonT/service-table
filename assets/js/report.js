@@ -104,6 +104,7 @@ function removeRealFormat(price){
 /*----------------------------------------*/
 /*           Generate Report              */
 /*----------------------------------------*/
+window.print();//This line is to start the page by taking a print
 const imprimir = () => {
     document.querySelector('.buttonBox').style.display = 'none';/*Hide print button*/
     window.print();/*Print*/
