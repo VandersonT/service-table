@@ -1,8 +1,8 @@
 /*---------------------------*/
 /*     Global-Variables    - */
 /*---------------------------*/
-let url = "http://127.0.0.1:5500";
-//let url = "https://vandersont.github.io/service-table";
+//let url = "http://127.0.0.1:5500";
+let url = "https://vandersont.github.io/service-table";
 
 
 
